@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
-import { Menu, X, Phone, ShieldCheck, Database } from 'lucide-react';
+import { Menu, X, Phone, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-interface HeaderProps {
-  onOpenAdmin: () => void;
-  showAdminBadge: boolean;
-  adminLeadCount: number;
-}
-
-export default function Header({ onOpenAdmin, showAdminBadge, adminLeadCount }: HeaderProps) {
+export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -78,27 +72,8 @@ export default function Header({ onOpenAdmin, showAdminBadge, adminLeadCount }: 
               </a>
             ))}
           </nav>
-
           {/* Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Lead inbox / CRM toggle button */}
-            <button
-              onClick={onOpenAdmin}
-              className="relative p-2.5 text-slate-500 hover:text-brand-teal hover:bg-slate-50 rounded-full transition-colors duration-200 group"
-              title="Panel de Leads (Simulador CRM)"
-              id="btn-admin-crm"
-            >
-              <Database className="w-5 h-5" />
-              {showAdminBadge && adminLeadCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-brand-teal text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
-                  {adminLeadCount}
-                </span>
-              )}
-              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[11px] font-medium px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">
-                Buzón de Leads
-              </span>
-            </button>
-
             <a
               href="#contacto"
               onClick={(e) => handleNavClick(e, '#contacto')}
@@ -121,20 +96,6 @@ export default function Header({ onOpenAdmin, showAdminBadge, adminLeadCount }: 
 
           {/* Mobile Menu Action Row */}
           <div className="flex lg:hidden items-center gap-3">
-            {/* CRM tracker for mobile */}
-            <button
-              onClick={onOpenAdmin}
-              className="relative p-2 text-slate-600 hover:bg-slate-100 rounded-full"
-              id="btn-mobile-crm"
-            >
-              <Database className="w-5 h-5" />
-              {showAdminBadge && adminLeadCount > 0 && (
-                <div className="absolute -top-1 -right-1 bg-brand-teal text-white text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-bold">
-                  {adminLeadCount}
-                </div>
-              )}
-            </button>
-
             {/* Mobile Hamburger menu */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

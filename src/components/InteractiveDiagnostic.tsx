@@ -181,7 +181,7 @@ export default function InteractiveDiagnostic({ onSubmitDiagnostic }: Interactiv
             </p>
 
             <p className="font-sans text-slate-500 text-xs sm:text-sm leading-relaxed font-light">
-              Tómate 60 segundos para contestar estas 4 preguntas clave. Al finalizar, recibirás un análisis estratégico instantáneo desarrollado bajo las metodologías de optimización de Cristian Casas.
+              Tómate 60 segundos para contestar estas 4 preguntas clave. Al finalizar, recibirás un análisis estratégico instantáneo desarrollado bajo las metodologías de optimización de C&S Partners.
             </p>
 
             {/* Badges footer */}
@@ -277,7 +277,7 @@ export default function InteractiveDiagnostic({ onSubmitDiagnostic }: Interactiv
                         <input
                           type="text"
                           required
-                          placeholder="Ej. Cristian Casas"
+                          placeholder="Ej. Carlos Pérez"
                           value={clientName}
                           onChange={(e) => setClientName(e.target.value)}
                           className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-teal bg-slate-50/50 text-sm"
@@ -359,7 +359,7 @@ export default function InteractiveDiagnostic({ onSubmitDiagnostic }: Interactiv
                             <UserCheck className="w-4 h-4" />
                           </div>
                           <span className="text-slate-600">
-                            <span className="font-bold text-slate-800">Cristian Casas</span> revisará personalmente los datos ingresados de tu situación y te contactará en las próximas 24 horas hábiles al número <span className="font-semibold text-slate-700">{clientPhone}</span>.
+                            <span className="font-bold text-slate-800">Nuestro equipo experto</span> revisará detalladamente los datos de tu situación y se pondrá en contacto en las próximas 24 horas hábiles al número <span className="font-semibold text-slate-700">{clientPhone}</span>.
                           </span>
                         </div>
                       </div>

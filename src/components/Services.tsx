@@ -300,7 +300,7 @@ export default function Services() {
                 <div>
                   <h5 className="font-display font-bold text-sm text-brand-blue">Estilo de Asesoría Independiente</h5>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed font-light">
-                    Al no depender estrictamente de una aseguradora o banco en específico, Cristian Casas compara y negocia de forma objetiva con los 56 aliados de la firma.
+                    Al no depender estrictamente de una aseguradora o banco en específico, nuestra firma compara y negocia de forma objetiva con los 56 aliados del sector.
                   </p>
                 </div>
               </div>

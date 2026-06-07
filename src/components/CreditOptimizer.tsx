@@ -274,7 +274,7 @@ export default function CreditOptimizer({ onSelectOption }: CreditOptimizerProps
                 <Forward className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
               </button>
               <div className="text-center text-[10px] text-slate-400 font-light">
-                *Analizamos tu caso con Cristian Casas de manera gratuita y 100% confidencial.
+                *Analizamos tu caso con nuestro equipo técnico de manera gratuita y 100% confidencial.
               </div>
             </div>
 

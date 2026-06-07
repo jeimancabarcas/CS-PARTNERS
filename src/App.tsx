@@ -13,35 +13,14 @@ import InteractiveDiagnostic from './components/InteractiveDiagnostic';
 import AllianceSection from './components/AllianceSection';
 import AboutUs from './components/AboutUs';
 import ContactSection from './components/ContactSection';
-import AdminCRM from './components/AdminCRM';
 import { Lead } from './types';
 import { ShieldCheck, Phone, Mail, FileText, ArrowUp } from 'lucide-react';
 
 export default function App() {
   const [prefilledMessage, setPrefilledMessage] = useState<string>('');
-  const [isCrmOpen, setIsCrmOpen] = useState<boolean>(false);
-  const [adminLeadCount, setAdminLeadCount] = useState<number>(0);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  // Sync current leads statistics
-  const updateLeadsStats = () => {
-    try {
-      const stored = localStorage.getItem('csp_leads');
-      if (stored) {
-        const parsed: Lead[] = JSON.parse(stored);
-        const uncontacted = parsed.filter(l => l.status === 'new').length;
-        setAdminLeadCount(uncontacted);
-      } else {
-        setAdminLeadCount(0);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
-    updateLeadsStats();
-
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
     };
@@ -90,7 +69,6 @@ export default function App() {
       const leads: Lead[] = existing ? JSON.parse(existing) : [];
       leads.unshift(newLead);
       localStorage.setItem('csp_leads', JSON.stringify(leads));
-      updateLeadsStats();
     } catch (err) {
       console.error("Error saving strategic diagnostic lead:", err);
     }
@@ -107,11 +85,7 @@ export default function App() {
     <div className="min-h-screen bg-brand-cream relative">
       
       {/* 1. Translucent Responsive Navigation Header */}
-      <Header
-        onOpenAdmin={() => setIsCrmOpen(true)}
-        showAdminBadge={adminLeadCount > 0}
-        adminLeadCount={adminLeadCount}
-      />
+      <Header />
 
       {/* Main Pages content */}
       <main>
@@ -133,14 +107,14 @@ export default function App() {
         {/* 7. Alliance Network Section */}
         <AllianceSection />
 
-        {/* 8. Trayectoria (Bio de Cristian Casas + clickable Business Card widget) */}
+        {/* 8. Trayectoria Corporativa (C&S Partners + tarjeta interactiva de contacto) */}
         <AboutUs />
 
         {/* 9. Contact Section Form */}
         <ContactSection
           prefilledMessage={prefilledMessage}
           onClearPrefill={() => setPrefilledMessage('')}
-          onLeadSubmitted={updateLeadsStats}
+          onLeadSubmitted={() => {}}
         />
       </main>
 
@@ -152,10 +126,10 @@ export default function App() {
             {/* Brand column */}
             <div className="space-y-4 col-span-2">
               <span className="font-display font-black text-white text-lg tracking-tight block">
-                CASAS STRATEGIC PARTNERS S.A.S.
+                C&S PARTNERS S.A.S.
               </span>
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-sans font-light">
-                Acompañamiento especializado en la estructuración, protección y optimización de patrimonios familiares y empresariales en Colombia. Una mirada independiente que compara alternativas de 56 aliados claves.
+                Acompañamiento corporativo y especializado en la estructuración, protección y optimización de patrimonios familiares y empresariales en Colombia. Una mirada independiente que compara alternativas de 56 aliados claves.
               </p>
             </div>
 
@@ -175,7 +149,7 @@ export default function App() {
             <div className="space-y-4">
               <h4 className="text-xs font-mono font-bold text-brand-cyan tracking-wider uppercase">Coordenadas Directas</h4>
               <p className="text-xs font-mono text-slate-400">
-                <a href="mailto:ccasas@cspartners.com" className="hover:text-white block transition-colors">ccasas@cspartners.com</a>
+                <a href="mailto:contacto@cspartners.com.co" className="hover:text-white block transition-colors">contacto@cspartners.com.co</a>
                 <a href="tel:+573204567890" className="hover:text-white block mt-1 transition-colors">+57 320 456 7890</a>
               </p>
               <div className="flex gap-2 text-[10px] text-slate-450 items-center font-sans font-semibold">
@@ -188,7 +162,7 @@ export default function App() {
           {/* Sub signature column */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-500 font-light">
             <span className="text-center sm:text-left">
-              © {new Date().getFullYear()} CASAS STRATEGIC PARTNERS S.A.S. (C&S Partners) — Todos los derechos reservados.
+              © {new Date().getFullYear()} C&S PARTNERS S.A.S. — Todos los derechos reservados.
             </span>
             <span className="flex items-center gap-1">
               Desarrollo de Estrategia Sostenible • Diseñado con Excelencia Profesional
@@ -207,14 +181,6 @@ export default function App() {
         >
           <ArrowUp className="w-5 h-5" />
         </button>
-      )}
-
-      {/* 11. Modal Window for Back-office Lead Tracker (Simulador CRM) */}
-      {isCrmOpen && (
-        <AdminCRM
-          onClose={() => setIsCrmOpen(false)}
-          onRefreshBadgeCount={updateLeadsStats}
-        />
       )}
 
     </div>

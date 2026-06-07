@@ -8,9 +8,9 @@ export default function AboutUs() {
 
   const contactData = {
     phone: '+57 320 456 7890',
-    email: 'ccasas@cspartners.com',
-    addr: 'Av. Principal #123, Oficina 456, Ciudad, País',
-    web: 'www.cspartners.com'
+    email: 'contacto@cspartners.com.co',
+    addr: 'Av. Principal #123, Oficina 456, Bogotá D.C., Colombia',
+    web: 'www.cspartners.com.co'
   };
 
   const handleCopy = (text: string, fieldName: string) => {
@@ -37,7 +37,7 @@ export default function AboutUs() {
             Dirección estratégica y valores independientes.
           </h2>
           <p className="font-sans text-slate-500 mt-4 leading-relaxed font-light">
-            Casas Strategic Partners nace de la visión de Cristian Casas, estructurando planes de protección patrimonial y de optimización de pasivos con un firme rigor técnico, legal y ético.
+            C&S Partners nace como una firma especializada en estructurar planes de protección patrimonial y de optimización de pasivos con un firme rigor técnico, legal y ético.
           </p>
         </div>
 
@@ -64,21 +64,21 @@ export default function AboutUs() {
               <div className="flex items-center justify-between pb-8 border-b border-white/10">
                 <Logo className="h-10 w-10 animate-pulse" showText={true} textColor="text-white" />
                 <span className="text-[9px] font-mono border border-white/25 px-2 py-0.5 rounded uppercase tracking-wider text-slate-300 font-bold">
-                  General Manager
+                  Firma Consultora
                 </span>
               </div>
 
               {/* General Manager Name */}
               <div className="my-8">
                 <h3 className="font-display font-black text-2.5xl tracking-normal text-white">
-                  Cristian Casas
+                  C&S Partners
                 </h3>
                 <p className="text-xs font-mono uppercase tracking-widest text-brand-cyan font-bold mt-1">
-                  General Manager
+                  Consultoría Estratégica
                 </p>
                 
                 <p className="text-[11px] font-sans font-light mt-3 text-slate-350 max-w-xs leading-relaxed">
-                  "Generamos valor a largo plazo protegiendo tu patrimonio con transparencia, confianza y excelencia profesional."
+                  "Generamos valor a largo plazo protegiendo la estructura patrimonial de personas y empresas con transparencia, confianza y excelencia profesional."
                 </p>
               </div>
 
@@ -194,10 +194,10 @@ export default function AboutUs() {
                 href="#contacto"
                 className="font-display text-sm font-bold text-white bg-brand-teal hover:bg-brand-teal/95 px-6 py-3 rounded-full transition-all duration-200"
               >
-                Conectar con Cristian Casas
+                Solicitar Asesoría Empresarial
               </a>
               <span className="text-xs text-slate-400 font-sans">
-                O copia sus coordenadas desde la tarjeta interactiva.
+                O copia los datos de contacto desde la tarjeta corporativa.
               </span>
             </div>
 

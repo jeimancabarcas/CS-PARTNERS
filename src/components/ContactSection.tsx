@@ -93,7 +93,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                 Inicia una conversación sin compromiso hoy.
               </h2>
               <p className="font-sans text-slate-500 mt-3 text-sm sm:text-base font-light leading-relaxed">
-                ¿Listo para recortar años de tu hipoteca, mitigar riesgos patrimoniales u optimizar tu declaración fiscal? Escríbenos o agenda una videollamada de asesoría con Cristian Casas.
+                ¿Listo para recortar años de tu hipoteca, mitigar riesgos patrimoniales u optimizar tu declaración fiscal? Escríbenos o agenda una consultoría con nuestro equipo experto.
               </p>
 
               {/* Direct coordinates box */}
@@ -119,7 +119,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                   <div>
                     <h4 className="font-display font-bold text-slate-900 text-sm">Correo Institucional</h4>
                     <p className="text-sm font-mono lowercase mt-0.5 text-slate-600 hover:text-brand-teal transition-colors">
-                      <a href="mailto:ccasas@cspartners.com">ccasas@cspartners.com</a>
+                      <a href="mailto:contacto@cspartners.com.co">contacto@cspartners.com.co</a>
                     </p>
                     <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Respuestas en menos de 24 horas hábiles</span>
                   </div>
@@ -132,7 +132,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                   <div>
                     <h4 className="font-display font-bold text-slate-900 text-sm">Sede de Operaciones</h4>
                     <p className="text-sm font-light mt-0.5 text-slate-600">
-                      Av. Principal #123, Oficina 456, Ciudad, País
+                      Av. Principal #123, Oficina 456, Bogotá D.C., Colombia
                     </p>
                     <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Atención presencial previa cita agendada</span>
                   </div>
@@ -171,7 +171,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                     className="mb-5 bg-brand-teal/8 border border-brand-teal/20 rounded-xl p-3.5 flex items-start justify-between gap-3 text-xs text-brand-teal font-medium"
                   >
                     <span>
-                      📊 <strong>¡Simulación Hipotecaria Cargada!</strong> Hemos autocompletado tu mensaje con los cálculos de ahorro del simulador para que Cristian los evalúe directamente.
+                      📊 <strong>¡Simulación Hipotecaria Cargada!</strong> Hemos autocompletado tu mensaje con los cálculos de ahorro del simulador para que sea evaluado directamente por la firma.
                     </span>
                     <button
                       onClick={onClearPrefill}
@@ -188,7 +188,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                 <div className="mb-6 p-4 rounded-xl bg-teal-50 border border-brand-teal/25 text-brand-teal font-sans text-xs sm:text-sm flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 shrink-0" />
                   <div>
-                    <strong>¡Mensaje Enviado Exitosamente!</strong> Tu lead ha sido incorporado al buzón para su análisis técnico. Cristian Casas te contactará pronto.
+                    <strong>¡Mensaje Enviado Exitosamente!</strong> Tus datos han sido recibidos de forma confidencial. Uno de nuestros asesores especializados te contactará a la brevedad.
                   </div>
                 </div>
               )}
@@ -201,7 +201,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                     <input
                       type="text"
                       required
-                      placeholder="Ej. Cristian Casas"
+                      placeholder="Ej. Carlos Pérez"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-teal bg-white text-sm"

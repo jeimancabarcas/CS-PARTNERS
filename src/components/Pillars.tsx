@@ -74,7 +74,7 @@ export default function Pillars() {
             Tres pilares estratégicos para liderar tu futuro financiero.
           </h2>
           <p className="font-sans text-slate-500 mt-4 leading-relaxed font-light">
-            En Casas Strategic Partners, no creemos en soluciones genéricas. Nuestro enfoque integral, transparente y basado en la excelencia profesional nos permite brindar una asesoría transversal en tres etapas decisivas:
+            En C&S Partners, no creemos en soluciones genéricas. Nuestro enfoque integral, transparente y basado en la excelencia profesional nos permite brindar una asesoría transversal en tres etapas decisivas:
           </p>
         </div>
 
