@@ -15,6 +15,17 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { name: 'Inicio', href: '#inicio' },
     { name: 'Pilares', href: '#pilares' },
@@ -44,81 +55,83 @@ export default function Header() {
   };
 
   return (
-    <header
-      id="main-header"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-xs py-3'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#inicio" onClick={(e) => handleNavClick(e, '#inicio')} className="focus:outline-none">
-            <Logo className="h-10 w-10" />
-          </a>
+    <>
+      <header
+        id="main-header"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-xs py-3'
+            : 'bg-transparent py-5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <a href="#inicio" onClick={(e) => handleNavClick(e, '#inicio')} className="focus:outline-none">
+              <Logo className="h-10 w-10" />
+            </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-7">
-            {navItems.map((item) => (
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-7">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="font-sans text-sm font-medium text-slate-600 hover:text-brand-teal transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </nav>
+            {/* Actions */}
+            <div className="hidden lg:flex items-center gap-4">
               <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="font-sans text-sm font-medium text-slate-600 hover:text-brand-teal transition-colors duration-200"
+                href="#contacto"
+                onClick={(e) => handleNavClick(e, '#contacto')}
+                className="flex items-center gap-2 font-sans text-sm font-semibold text-brand-teal border border-brand-teal/30 hover:border-brand-teal/80 bg-brand-teal/5 hover:bg-brand-teal/10 px-4 py-2 rounded-full transition-all duration-200"
+                id="nav-contact-call"
               >
-                {item.name}
+                <Phone className="w-4 h-4" />
+                Consúltanos
               </a>
-            ))}
-          </nav>
-          {/* Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="#contacto"
-              onClick={(e) => handleNavClick(e, '#contacto')}
-              className="flex items-center gap-2 font-sans text-sm font-semibold text-brand-teal border border-brand-teal/30 hover:border-brand-teal/80 bg-brand-teal/5 hover:bg-brand-teal/10 px-4 py-2 rounded-full transition-all duration-200"
-              id="nav-contact-call"
-            >
-              <Phone className="w-4 h-4" />
-              Consúltanos
-            </a>
 
-            <a
-              href="#diagnostico"
-              onClick={(e) => handleNavClick(e, '#diagnostico')}
-              className="font-display text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue/90 px-5 py-2.5 rounded-full shadow-sm shadow-brand-blue/15 transition-all duration-200 hover:-translate-y-0.5"
-              id="nav-diagnostic-cta"
-            >
-              Diagnóstico Express
-            </a>
-          </div>
+              <a
+                href="#diagnostico"
+                onClick={(e) => handleNavClick(e, '#diagnostico')}
+                className="font-display text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue/90 px-5 py-2.5 rounded-full shadow-sm shadow-brand-blue/15 transition-all duration-200 hover:-translate-y-0.5"
+                id="nav-diagnostic-cta"
+              >
+                Diagnóstico Express
+              </a>
+            </div>
 
-          {/* Mobile Menu Action Row */}
-          <div className="flex lg:hidden items-center gap-3">
-            {/* Mobile Hamburger menu */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-700 hover:bg-slate-100 rounded-lg focus:outline-none"
-              id="btn-hamburger"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Menu Action Row */}
+            <div className="flex lg:hidden items-center gap-3">
+              {/* Mobile Hamburger menu */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-slate-700 hover:bg-slate-100 rounded-lg focus:outline-none"
+                id="btn-hamburger"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Menu Backdrop & Sheet */}
+      {/* Mobile Menu Backdrop & Sheet - Rendered outside of the blurred header constraint */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
+          <div className="fixed inset-0 z-[1000] lg:hidden">
             {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
+              animate={{ opacity: 0.45 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black z-30 lg:hidden"
+              className="fixed inset-0 bg-black"
             />
 
             {/* Drawer */}
@@ -127,7 +140,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-brand-cream border-l border-slate-100 p-6 z-30 shadow-2xl flex flex-col justify-between lg:hidden"
+              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-brand-cream border-l border-slate-100 p-6 shadow-2xl flex flex-col justify-between"
               id="mobile-drawer"
             >
               <div className="space-y-6">
@@ -175,9 +188,9 @@ export default function Header() {
                 </a>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
