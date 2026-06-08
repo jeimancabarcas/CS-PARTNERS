@@ -8,7 +8,7 @@ export default function AboutUs() {
 
   const contactData = {
     phone: '+57 320 456 7890',
-    email: 'contacto@cspartners.com.co',
+    email: 'contact@cspartners.com.co',
     addr: 'Av. Principal #123, Oficina 456, Bogotá D.C., Colombia',
     web: 'www.cspartners.com.co'
   };
@@ -191,7 +191,7 @@ export default function AboutUs() {
             {/* Bottom mini CTA section */}
             <div className="mt-8 pt-6 border-t border-slate-200/60 flex items-center gap-4">
               <a
-                href="#contacto"
+                href="#contact"
                 className="font-display text-sm font-bold text-white bg-brand-teal hover:bg-brand-teal/95 px-6 py-3 rounded-full transition-all duration-200"
               >
                 Solicitar Asesoría Empresarial

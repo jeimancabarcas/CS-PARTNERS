@@ -87,8 +87,8 @@ export default function Header() {
             {/* Actions */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href="#contacto"
-                onClick={(e) => handleNavClick(e, '#contacto')}
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
                 className="flex items-center gap-2 font-sans text-sm font-semibold text-brand-teal border border-brand-teal/30 hover:border-brand-teal/80 bg-brand-teal/5 hover:bg-brand-teal/10 px-4 py-2 rounded-full transition-all duration-200"
                 id="nav-contact-call"
               >
@@ -172,8 +172,8 @@ export default function Header() {
               {/* Mobile CTA footer */}
               <div className="space-y-3 pt-6 border-t border-slate-200/50">
                 <a
-                  href="#contacto"
-                  onClick={(e) => handleNavClick(e, '#contacto')}
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
                   className="w-full flex items-center justify-center gap-2 font-sans py-3 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl"
                 >
                   <Phone className="w-4 h-4" />

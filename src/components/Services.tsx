@@ -246,7 +246,7 @@ export default function Services() {
                 </div>
                 
                 <button
-                  onClick={() => handleScrollTo('#contacto')}
+                  onClick={() => handleScrollTo('#contact')}
                   className="w-full sm:w-auto font-sans font-bold text-xs uppercase tracking-wider text-white bg-brand-blue hover:bg-brand-blue/95 px-6 py-3 rounded-full transition-all duration-200 text-center"
                 >
                   Asesoría Personalizada

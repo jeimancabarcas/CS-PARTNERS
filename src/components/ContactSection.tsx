@@ -16,6 +16,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
   const [service, setService] = useState('Patrimonio');
   const [message, setMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   // Sync Prefilled calculations
   useEffect(() => {
@@ -29,13 +30,15 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
     }
   }, [prefilledMessage]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!name || !email || !phone) {
       alert('Favor completar los campos obligatorios.');
       return;
     }
+
+    setIsSending(true);
 
     const newLead: Lead = {
       id: 'lead-' + Date.now(),
@@ -58,24 +61,50 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
       console.error("Failed saving lead:", err);
     }
 
-    // Success actions
-    setIsSuccess(true);
-    onLeadSubmitted(); // notify App to refresh badges/CRM state
+    // Send email using backend API
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          serviceInterest: service,
+          comments: message,
+        }),
+      });
 
-    // Reset fields
-    setName('');
-    setEmail('');
-    setPhone('');
-    setMessage('');
-    onClearPrefill();
+      if (!response.ok) {
+        throw new Error('API response failed');
+      }
 
-    setTimeout(() => {
-      setIsSuccess(false);
-    }, 5000);
+      // Success actions
+      setIsSuccess(true);
+      onLeadSubmitted(); // notify App to refresh badges/CRM state
+
+      // Reset fields
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+      onClearPrefill();
+
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 6000);
+    } catch (err) {
+      console.error("Error submitting lead to email:", err);
+      alert("Hubo un problema temporal con el servidor de correos. No te preocupes, tus datos ya quedaron registrados en nuestro sistema offline y nos contactaremos contigo lo antes posible.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
-    <section id="contacto" className="py-20 bg-white relative">
+    <section id="contact" className="py-20 bg-white relative">
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -119,7 +148,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                   <div>
                     <h4 className="font-display font-bold text-slate-900 text-sm">Correo Institucional</h4>
                     <p className="text-sm font-mono lowercase mt-0.5 text-slate-600 hover:text-brand-teal transition-colors">
-                      <a href="mailto:contacto@cspartners.com.co">contacto@cspartners.com.co</a>
+                      <a href="mailto:contact@cspartners.com.co">contact@cspartners.com.co</a>
                     </p>
                     <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Respuestas en menos de 24 horas hábiles</span>
                   </div>
@@ -263,11 +292,16 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
 
                 <button
                   type="submit"
-                  className="w-full font-display font-bold text-sm text-white bg-brand-blue hover:bg-brand-blue/95 py-4 rounded-xl cursor-pointer shadow-md shadow-brand-blue/15 transition-all duration-200 flex items-center justify-center gap-2"
+                  disabled={isSending}
+                  className="w-full font-display font-bold text-sm text-white bg-brand-blue hover:bg-brand-blue/95 py-4 rounded-xl cursor-pointer shadow-md shadow-brand-blue/15 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
                   id="btn-submit-lead-form"
                 >
-                  Enviar Mensaje Estratégico
-                  <Send className="w-4 h-4 ml-1" />
+                  {isSending ? 'Enviando Requerimiento...' : 'Enviar Mensaje Estratégico'}
+                  {isSending ? (
+                    <RefreshCw className="w-4.5 h-4.5 mx-1 animate-spin text-white" />
+                  ) : (
+                    <Send className="w-4 h-4 ml-1" />
+                  )}
                 </button>
               </form>
 

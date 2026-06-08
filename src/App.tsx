@@ -32,7 +32,7 @@ export default function App() {
   const handleApplyPrefill = (summary: string) => {
     setPrefilledMessage(summary);
     // Smooth scroll directly to contact form section
-    const target = document.querySelector('#contacto');
+    const target = document.querySelector('#contact');
     if (target) {
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
@@ -47,11 +47,13 @@ export default function App() {
     }
   };
 
-  const handleDiagnosticSubmit = (diagData: {
+  const handleDiagnosticSubmit = async (diagData: {
     profileType: string;
     metrics: string;
     answersSummary: Record<string, string>;
   }) => {
+    const commentsText = `--- INFORME DE DIAGNÓSTICO ESTRATÉGICO INSTANTÁNEO ---\nPerfil Arrojado: ${diagData.profileType}\nRecomendación Asignada: ${diagData.metrics}\nRespuestas de Selección:\n- Objetivo Principal: ${diagData.answersSummary.primary_goal || 'N/A'}\n- Crédito Hipotecario: ${diagData.answersSummary.has_mortgage || 'N/A'}\n- Nivel Tributario: ${diagData.answersSummary.tax_optimization || 'N/A'}\n- Blindaje de Ingreso: ${diagData.answersSummary.protection_level || 'N/A'}`;
+
     // Generate new Lead automatically and store in localStorage
     const newLead: Lead = {
       id: 'lead-' + Date.now(),
@@ -59,7 +61,7 @@ export default function App() {
       email: diagData.answersSummary.clientEmail || '',
       phone: diagData.answersSummary.clientPhone || '',
       serviceInterest: 'Evaluación del Estado Financiero',
-      comments: `--- INFORME DE DIAGNÓSTICO ESTRATÉGICO INSTANTÁNEO ---\nPerfil Arrojado: ${diagData.profileType}\nRecomendación Asignada: ${diagData.metrics}\nRespuestas de Selección:\n- Objetivo Principal: ${diagData.answersSummary.primary_goal || 'N/A'}\n- Crédito Hipotecario: ${diagData.answersSummary.has_mortgage || 'N/A'}\n- Nivel Tributario: ${diagData.answersSummary.tax_optimization || 'N/A'}\n- Blindaje de Ingreso: ${diagData.answersSummary.protection_level || 'N/A'}`,
+      comments: commentsText,
       createdAt: new Date().toISOString(),
       status: 'new'
     };
@@ -71,6 +73,24 @@ export default function App() {
       localStorage.setItem('csp_leads', JSON.stringify(leads));
     } catch (err) {
       console.error("Error saving strategic diagnostic lead:", err);
+    }
+
+    try {
+      await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: newLead.name,
+          email: newLead.email,
+          phone: newLead.phone,
+          serviceInterest: newLead.serviceInterest,
+          comments: newLead.comments,
+        }),
+      });
+    } catch (err) {
+      console.error("Error sending diagnostic lead via email:", err);
     }
   };
 
@@ -149,7 +169,7 @@ export default function App() {
             <div className="space-y-4">
               <h4 className="text-xs font-mono font-bold text-brand-cyan tracking-wider uppercase">Coordenadas Directas</h4>
               <p className="text-xs font-mono text-slate-400">
-                <a href="mailto:contacto@cspartners.com.co" className="hover:text-white block transition-colors">contacto@cspartners.com.co</a>
+                <a href="mailto:contact@cspartners.com.co" className="hover:text-white block transition-colors">contact@cspartners.com.co</a>
                 <a href="tel:+573204567890" className="hover:text-white block mt-1 transition-colors">+57 320 456 7890</a>
               </p>
               <div className="flex gap-2 text-[10px] text-slate-450 items-center font-sans font-semibold">
