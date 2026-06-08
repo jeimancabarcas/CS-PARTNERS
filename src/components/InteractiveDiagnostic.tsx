@@ -290,7 +290,7 @@ export default function InteractiveDiagnostic({ onSubmitDiagnostic }: Interactiv
                           <input
                             type="tel"
                             required
-                            placeholder="Ej. 320 456 7890"
+                            placeholder="Ej. 302 378 2878"
                             value={clientPhone}
                             onChange={(e) => setClientPhone(e.target.value)}
                             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-teal bg-slate-50/50 text-sm"

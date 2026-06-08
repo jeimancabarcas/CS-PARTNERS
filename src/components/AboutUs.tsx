@@ -7,9 +7,9 @@ export default function AboutUs() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const contactData = {
-    phone: '+57 320 456 7890',
+    phone: '+57 302 378 2878',
     email: 'contact@cspartners.com.co',
-    addr: 'Av. Principal #123, Oficina 456, Bogotá D.C., Colombia',
+    addr: 'Calle 53A Bis # 22 - 28, Bogotá D.C., Colombia',
     web: 'www.cspartners.com.co'
   };
 
@@ -63,8 +63,8 @@ export default function AboutUs() {
               {/* Logo row */}
               <div className="flex items-center justify-between pb-8 border-b border-white/10">
                 <Logo className="h-10 w-10 animate-pulse" showText={true} textColor="text-white" />
-                <span className="text-[9px] font-mono border border-white/25 px-2 py-0.5 rounded uppercase tracking-wider text-slate-300 font-bold">
-                  Firma Consultora
+                <span className="text-[9px] font-mono border border-brand-cyan/40 bg-brand-cyan/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider text-brand-cyan font-bold">
+                  Cobertura Nacional
                 </span>
               </div>
 

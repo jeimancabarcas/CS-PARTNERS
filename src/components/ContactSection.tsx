@@ -115,14 +115,19 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
           {/* Contact Details Column Left */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs font-bold tracking-widest text-brand-teal uppercase px-3 py-1 bg-brand-teal/8 rounded-full">
-                CONEXIÓN DIRECTA
-              </span>
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className="font-mono text-[10px] font-bold tracking-widest text-brand-teal uppercase px-3 py-1 bg-brand-teal/8 rounded-full">
+                  CONEXIÓN DIRECTA
+                </span>
+                <span className="font-mono text-[10px] font-bold tracking-widest text-brand-blue bg-brand-cyan/20 px-3 py-1 rounded-full uppercase">
+                  COBERTURA NACIONAL
+                </span>
+              </div>
               <h2 className="font-display font-black text-3xl sm:text-4xl text-brand-blue tracking-tight mt-4">
                 Inicia una conversación sin compromiso hoy.
               </h2>
               <p className="font-sans text-slate-500 mt-3 text-sm sm:text-base font-light leading-relaxed">
-                ¿Listo para recortar años de tu hipoteca, mitigar riesgos patrimoniales u optimizar tu declaración fiscal? Escríbenos o agenda una consultoría con nuestro equipo experto.
+                ¿Listo para recortar años de tu hipoteca, mitigar riesgos patrimoniales u optimizar tu declaración fiscal? Escríbenos o agenda una consultoría con nuestro equipo experto. <strong>Brindamos soluciones y asesoría estratégica de manera remota a nivel nacional en toda Colombia</strong>, además de atención presencial programada.
               </p>
 
               {/* Direct coordinates box */}
@@ -135,7 +140,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                   <div>
                     <h4 className="font-display font-bold text-slate-900 text-sm">WhatsApp y Teléfono</h4>
                     <p className="text-sm font-mono mt-0.5 text-slate-600 hover:text-brand-teal transition-colors">
-                      <a href="tel:+573204567890">+57 320 456 7890</a>
+                      <a href="tel:+573023782878">+57 302 378 2878</a>
                     </p>
                     <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Atención: Lunes a Viernes (8:00 AM - 6:00 PM)</span>
                   </div>
@@ -161,9 +166,9 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                   <div>
                     <h4 className="font-display font-bold text-slate-900 text-sm">Sede de Operaciones</h4>
                     <p className="text-sm font-light mt-0.5 text-slate-600">
-                      Av. Principal #123, Oficina 456, Bogotá D.C., Colombia
+                      CLL 53 A BIS 22 28, Bogotá D.C., Colombia
                     </p>
-                    <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Atención presencial previa cita agendada</span>
+                    <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Atención presencial previa cita o asesoría online a nivel nacional</span>
                   </div>
                 </div>
 
@@ -242,7 +247,7 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                     <input
                       type="tel"
                       required
-                      placeholder="Ej. +57 320 456 7890"
+                      placeholder="Ej. +57 302 378 2878"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-1 focus:ring-brand-teal bg-white text-sm"
@@ -272,7 +277,8 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                     >
                       <option value="Patrimonio">Estructuración Patrimonial</option>
                       <option value="Planeación Tributaria">Planeación Tributaria</option>
-                      <option value="Seguros y Pensión">Seguros y Pensión</option>
+                      <option value="Seguros">Seguros de Vida y Salud</option>
+                      <option value="Pensión">Pensión y Retiro Privado</option>
                       <option value="Crédito e Hipotecas">Crédito y Adquisición Vivienda</option>
                       <option value="Insolvencia">Insolvencia y Reorganización</option>
                     </select>

@@ -14,7 +14,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState<'wealth' | 'protection' | 'credit' | 'insolvency'>('wealth');
+  const [activeTab, setActiveTab] = useState<'wealth' | 'insurance' | 'pension' | 'credit' | 'insolvency'>('wealth');
 
   const tabs = [
     {
@@ -24,10 +24,16 @@ export default function Services() {
       icon: TrendingUp,
     },
     {
-      id: 'protection' as const,
-      label: 'Seguros y Pensión',
+      id: 'insurance' as const,
+      label: 'Seguros Especializados',
       shortLabel: 'Seguros',
       icon: ShieldCheck,
+    },
+    {
+      id: 'pension' as const,
+      label: 'Planeación Pensional',
+      shortLabel: 'Pensión',
+      icon: HeartHandshake,
     },
     {
       id: 'credit' as const,
@@ -63,23 +69,41 @@ export default function Services() {
           ],
           alliancesCount: '25+ compañías aliadas especializadas en gestión de fondos e inversiones.'
         };
-      case 'protection':
+      case 'insurance':
         return {
-          title: 'Seguros, Pensión y Protección Familiar e Industrial',
-          subtitle: 'Blindaje integral ante cualquier imprevisto de salud, vida o continuidad de negocio.',
-          desc: 'El patrimonio construido requiere de un escudo robusto. Evaluamos riesgos personales, familiares y empresariales para proponer seguros a la medida. Ofrecemos herramientas de ahorro pensional para asegurar un retiro digno y blindar socios corporativos.',
+          title: 'Seguros Especializados de Vida, Salud y Empresarial',
+          subtitle: 'Blindaje patrimonial ante cualquier imprevisto de salud, vida o continuidad de negocio.',
+          desc: 'El patrimonio construido con años de esfuerzo merece un escudo impenetrable. Evaluamos los riesgos personales, familiares y empresariales de manera objetiva para estructurar coberturas que se ajusten estrictamente a tus metas, garantizando el mayor respaldo del sector.',
           subservices: [
-            'Seguros de Vida de alta cobertura con componentes de ahorro local e internacional.',
-            'Seguros de Salud prepagada, emergencias médicas y pólizas de enfermedades graves.',
-            'Estrategias de Retiro y Pensión privada complementaria de rentas vitalicias.',
-            'Blindaje Societario y pólizas "Hombre Clave" para garantizar la continuidad empresarial.'
+            'Seguros de Vida local e internacional con componentes de ahorro programado.',
+            'Seguros de Salud prepagada, pólizas colectivas y cobertura de enfermedades graves.',
+            'Blindaje Societario estructurado para salvaguardar la participación de socios comerciales.',
+            'Pólizas "Hombre Clave" enfocadas en mitigar riesgos de continuidad operacional en empresas.'
           ],
           benefits: [
-            'Protección frente a fluctuaciones de mercado o sucesos de fuerza mayor.',
-            'Diversas alternativas de primas adaptables a cada nivel de ingresos.',
-            'Revisión anual de pólizas para garantizar el menor costo técnico con el mayor beneficio.'
+            'Tranquilidad y respaldo frente a sucesos imprevistos o fortuitos.',
+            'Alternativas diversificadas en coberturas tanto nacionales como en el exterior.',
+            'Optimización técnica de primas para garantizar costo-beneficio óptimo.'
           ],
-          alliancesCount: '18+ aseguradoras líderes aliadas en el país y a nivel internacional.'
+          alliancesCount: '15+ aseguradoras de primer nivel aliadas nacionales e internacionales.'
+        };
+      case 'pension':
+        return {
+          title: 'Planeación Pensional y Optimización del Retiro',
+          subtitle: 'Consolida tu estabilidad para el futuro mediante asesoría técnica y legal sin intermediarios.',
+          desc: 'Diseñamos esquemas eficientes para maximizar tus ingresos en la etapa de retiro. Evaluamos detenidamente tu historial laboral bajo el marco normativo colombiano, facilitando la toma de decisiones estratégicas entre regímenes u opciones privadas.',
+          subservices: [
+            'Planes de Jubilación privada complementarios con excelentes beneficios de deducción impositiva.',
+            'Estudios de brecha pensional para conocer tus ingresos futuros y planificar correcciones.',
+            'Estrategias de Retiro y Ahorro Voluntario programado bajo portafolios conservadores.',
+            'Asesoría en traslado de fondos y cálculo técnico de indemnizaciones sustitutivas.'
+          ],
+          benefits: [
+            'Mitigación del impacto del retiro sobre tu estilo de vida familiar.',
+            'Aprovechamiento de las ventajas de disminución de retención en la fuente por aportes voluntarios.',
+            'Soporte técnico objetivo e independiente sin preferencia por ningún fondo específico.'
+          ],
+          alliancesCount: '10+ fondos de pensiones y administradoras independientes asociadas.'
         };
       case 'credit':
         return {

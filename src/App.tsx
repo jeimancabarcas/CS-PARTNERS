@@ -31,20 +31,24 @@ export default function App() {
 
   const handleApplyPrefill = (summary: string) => {
     setPrefilledMessage(summary);
-    // Smooth scroll directly to contact form section
-    const target = document.querySelector('#contact');
-    if (target) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = target.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
+    
+    // Defer the scroll calculation slightly to let React complete its rendering
+    // and let Framer Motion mount elements, avoiding interrupted scrolls.
+    setTimeout(() => {
+      const target = document.querySelector('#contact');
+      if (target) {
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = target.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 120);
   };
 
   const handleDiagnosticSubmit = async (diagData: {
@@ -170,11 +174,14 @@ export default function App() {
               <h4 className="text-xs font-mono font-bold text-brand-cyan tracking-wider uppercase">Coordenadas Directas</h4>
               <p className="text-xs font-mono text-slate-400">
                 <a href="mailto:contact@cspartners.com.co" className="hover:text-white block transition-colors">contact@cspartners.com.co</a>
-                <a href="tel:+573204567890" className="hover:text-white block mt-1 transition-colors">+57 320 456 7890</a>
+                <a href="tel:+573023782878" className="hover:text-white block mt-1 transition-colors">+57 302 378 2878</a>
               </p>
-              <div className="flex gap-2 text-[10px] text-slate-450 items-center font-sans font-semibold">
+              <p className="text-[10px] text-slate-400 font-sans mt-0.5">
+                Sede: CLL 53 A BIS 22 28, Bogotá
+              </p>
+              <div className="flex gap-2 text-[10px] text-slate-400 items-center font-sans font-semibold">
                 <ShieldCheck className="w-4 h-4 text-brand-teal" />
-                <span>Habeas Data Cumplido • Colombia</span>
+                <span>Habeas Data Cumplido • Cobertura Nacional</span>
               </div>
             </div>
           </div>

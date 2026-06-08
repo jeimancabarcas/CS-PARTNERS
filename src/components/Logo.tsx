@@ -24,7 +24,7 @@ export default function Logo({ className = "h-12 w-12", showText = true, textCol
             C&S PARTNERS
           </span>
           <span className="text-[9px] font-mono tracking-widest text-brand-teal font-semibold uppercase leading-tight mt-0.5">
-            STRATEGIC PARTNERS
+            CASAS STRATEGIC PARTNERS
           </span>
         </div>
       )}
