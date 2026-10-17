@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Compass, Send, CheckCircle2, Trash2, Edit3, X, Database, Clock, RefreshCw } from 'lucide-react';
+import { Mail, Phone, MapPin, Compass, Send, CheckCircle2, Trash2, Edit3, X, Database, Clock, RefreshCw, Linkedin, ExternalLink } from 'lucide-react';
 import { Lead } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -116,6 +116,9 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap gap-2 items-center">
+                <span className="font-mono text-[10px] font-bold tracking-widest text-brand-blue uppercase px-3 py-1 bg-brand-cyan/25 border border-brand-cyan/40 rounded-full">
+                  NIT: 902029756
+                </span>
                 <span className="font-mono text-[10px] font-bold tracking-widest text-brand-teal uppercase px-3 py-1 bg-brand-teal/8 rounded-full">
                   CONEXIÓN DIRECTA
                 </span>
@@ -156,6 +159,27 @@ export default function ContactSection({ prefilledMessage, onClearPrefill, onLea
                       <a href="mailto:contact@cspartners.com.co">contact@cspartners.com.co</a>
                     </p>
                     <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Respuestas en menos de 24 horas hábiles</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <div className="p-3 bg-brand-teal/10 text-brand-teal rounded-2xl shrink-0">
+                    <Linkedin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-slate-900 text-sm">LinkedIn Profesional</h4>
+                    <p className="text-sm font-sans mt-0.5 text-slate-600">
+                      <a
+                        href="https://www.linkedin.com/in/finanzasclaudia/?isSelfProfile=true"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-teal hover:underline font-medium inline-flex items-center gap-1.5"
+                      >
+                        Finanzas Claudia (LinkedIn)
+                        <ExternalLink className="w-3.5 h-3.5 text-brand-teal" />
+                      </a>
+                    </p>
+                    <span className="text-[10px] text-slate-400 font-light mt-0.5 block">Conoce nuestra trayectoria profesional y publicaciones</span>
                   </div>
                 </div>
 

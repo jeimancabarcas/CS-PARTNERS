@@ -14,7 +14,7 @@ import AllianceSection from './components/AllianceSection';
 import AboutUs from './components/AboutUs';
 import ContactSection from './components/ContactSection';
 import { Lead } from './types';
-import { ShieldCheck, Phone, Mail, FileText, ArrowUp } from 'lucide-react';
+import { ShieldCheck, Phone, Mail, FileText, ArrowUp, Linkedin, ExternalLink } from 'lucide-react';
 
 export default function App() {
   const [prefilledMessage, setPrefilledMessage] = useState<string>('');
@@ -149,12 +149,29 @@ export default function App() {
           <div className="grid md:grid-cols-4 gap-8 pb-10 border-b border-white/5">
             {/* Brand column */}
             <div className="space-y-4 col-span-2">
-              <span className="font-display font-black text-white text-lg tracking-tight block">
-                C&S PARTNERS S.A.S.
-              </span>
+              <div className="space-y-1">
+                <span className="font-display font-black text-white text-lg tracking-tight block">
+                  C&S PARTNERS S.A.S.
+                </span>
+                <span className="inline-block font-mono text-xs text-brand-cyan font-bold bg-white/5 border border-brand-cyan/30 px-2 py-0.5 rounded">
+                  NIT: 902029756
+                </span>
+              </div>
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-sans font-light">
                 Acompañamiento corporativo y especializado en la estructuración, protección y optimización de patrimonios familiares y empresariales en Colombia. Una mirada independiente que compara alternativas de 56 aliados claves.
               </p>
+              <div className="pt-1">
+                <a
+                  href="https://www.linkedin.com/in/finanzasclaudia/?isSelfProfile=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-sans text-slate-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10"
+                >
+                  <Linkedin className="w-3.5 h-3.5 text-brand-cyan" />
+                  <span>LinkedIn: Finanzas Claudia</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400" />
+                </a>
+              </div>
             </div>
 
             {/* Quick Links */}
@@ -189,7 +206,7 @@ export default function App() {
           {/* Sub signature column */}
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-500 font-light">
             <span className="text-center sm:text-left">
-              © {new Date().getFullYear()} C&S PARTNERS S.A.S. — Todos los derechos reservados.
+              © {new Date().getFullYear()} C&S PARTNERS S.A.S. • NIT: 902029756 — Todos los derechos reservados.
             </span>
             <span className="flex items-center gap-1">
               Desarrollo de Estrategia Sostenible • Diseñado con Excelencia Profesional

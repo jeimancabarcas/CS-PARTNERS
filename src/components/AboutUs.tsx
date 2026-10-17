@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserCheck, Phone, Mail, MapPin, Globe, Check, Copy, Award, ShieldAlert } from 'lucide-react';
+import { UserCheck, Phone, Mail, MapPin, Globe, Check, Copy, Award, ShieldAlert, Linkedin, ExternalLink } from 'lucide-react';
 import Logo from './Logo';
 import { motion } from 'motion/react';
 
@@ -10,7 +10,9 @@ export default function AboutUs() {
     phone: '+57 302 378 2878',
     email: 'contact@cspartners.com.co',
     addr: 'Calle 53A Bis # 22 - 28, Bogotá D.C., Colombia',
-    web: 'www.cspartners.com.co'
+    web: 'www.cspartners.com.co',
+    nit: '902029756',
+    linkedin: 'https://www.linkedin.com/in/finanzasclaudia/?isSelfProfile=true'
   };
 
   const handleCopy = (text: string, fieldName: string) => {
@@ -70,12 +72,20 @@ export default function AboutUs() {
 
               {/* General Manager Name */}
               <div className="my-8">
-                <h3 className="font-display font-black text-2.5xl tracking-normal text-white">
-                  C&S Partners
-                </h3>
-                <p className="text-xs font-mono uppercase tracking-widest text-brand-cyan font-bold mt-1">
-                  Consultoría Estratégica
-                </p>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-display font-black text-2.5xl tracking-normal text-white">
+                    C&S Partners
+                  </h3>
+                </div>
+                <div className="flex items-center gap-3 mt-1 flex-wrap">
+                  <p className="text-xs font-mono uppercase tracking-widest text-brand-cyan font-bold">
+                    Consultoría Estratégica
+                  </p>
+                  <span className="text-slate-500 text-xs">•</span>
+                  <span className="text-xs font-mono text-brand-cyan/90 font-semibold bg-white/5 px-2 py-0.5 rounded border border-white/10">
+                    NIT: {contactData.nit}
+                  </span>
+                </div>
                 
                 <p className="text-[11px] font-sans font-light mt-3 text-slate-350 max-w-xs leading-relaxed">
                   "Generamos valor a largo plazo protegiendo la estructura patrimonial de personas y empresas con transparencia, confianza y excelencia profesional."
@@ -114,6 +124,24 @@ export default function AboutUs() {
                     {copiedField === 'email' ? <Check className="w-3.5 h-3.5 text-brand-cyan" /> : <Copy className="w-3.5 h-3.5 opacity-50 opacity-100" />}
                   </div>
                 </div>
+
+                {/* LinkedIn */}
+                <a
+                  href={contactData.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 cursor-pointer transition-colors group/row"
+                  title="Visitar perfil en LinkedIn"
+                >
+                  <div className="flex items-center gap-3">
+                    <Linkedin className="w-4 h-4 text-brand-cyan shrink-0" />
+                    <span className="font-sans text-[11px] text-brand-cyan">LinkedIn: Finanzas Claudia</span>
+                  </div>
+                  <div className="text-[10px] text-slate-400 group-hover/row:text-white transition-colors flex items-center gap-1">
+                    <span className="text-[9px] uppercase font-mono">Ver perfil</span>
+                    <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover/row:opacity-100" />
+                  </div>
+                </a>
 
                 {/* Address */}
                 <div

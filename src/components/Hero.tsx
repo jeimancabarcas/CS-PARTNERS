@@ -69,28 +69,20 @@ export default function Hero() {
               financiero firmemente protegido.
             </motion.p>
 
-            {/* Call to Actions */}
+            {/* Call to Action */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mt-2"
+              className="flex items-stretch sm:items-center gap-4 w-full sm:w-auto mt-2"
             >
               <button
-                onClick={() => handleScrollTo('#diagnostico')}
-                className="group flex items-center justify-center gap-2 font-display text-base font-bold text-white bg-brand-teal hover:bg-brand-teal/95 px-7 py-3.5 rounded-full shadow-md shadow-brand-teal/15 transition-all duration-200 hover:-translate-y-0.5"
-                id="btn-hero-diagnostic"
+                onClick={() => handleScrollTo('#contact')}
+                className="group flex items-center justify-center gap-2.5 font-display text-base font-bold text-white bg-brand-teal hover:bg-brand-teal/95 px-8 py-4 rounded-full shadow-lg shadow-brand-teal/20 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
+                id="btn-hero-contact"
               >
-                Hacer Diagnóstico Financiero
-                <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button
-                onClick={() => handleScrollTo('#simulador')}
-                className="flex items-center justify-center gap-2 font-sans text-base font-semibold text-brand-blue border border-brand-blue/15 hover:border-brand-blue/40 bg-white/40 hover:bg-white/80 px-7 py-3.5 rounded-full transition-all duration-200"
-                id="btn-hero-simulator"
-              >
-                Simular Ahorro Hipotecario
+                Contáctanos ahora
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
 
